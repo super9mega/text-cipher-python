@@ -5,8 +5,16 @@ import string
 # this code takes an input then encodes the code in AES with a password or decrypts the password
 # note, the colin defines the start, if there is a space directly after the colin, its part of the code
 #this value if 0 will encrypt, if 1 will decrypt
-endecpt = 0
-key = 'enter personal key here...'
+print('encode(0) or decode(1) message? ')
+while True:
+    try:
+        endecpt = int(input())
+        break
+    except ValueError:
+        print('enter a number, either 0 or 1')
+print('enter key: ')
+key = input()
+print('enter text to change: ')
 user = input()
 
 def encode(key, user):
