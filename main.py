@@ -12,7 +12,7 @@ while True:
         break
     except ValueError:
         print('enter a number, either 0 or 1')
-print('enter key: ')
+print('enter key (blank for random): ')
 key = input()
 print('enter text to change: ')
 user = input()
