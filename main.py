@@ -17,15 +17,14 @@ key = input()
 print('enter text to change: ')
 user = input()
 
-def encode(key, user):
-    x = len(user)
-    y = len(key) - 1
+def encode(a, b):
+    x = len(b)
+    y = len(a) - 1
     z = -1
     realkey = []
-    encry = []
     for i in range(x):
         z += 1
-        realkey.append(key[z])
+        realkey.append(a[z])
         if z >= y:
             z = -1
     letters = string.ascii_letters 
@@ -36,23 +35,23 @@ def encode(key, user):
     ans = []
     for i in range(x):
         cypher = chars.index(realkey[i])
-        let = chars.index(user[i])
-        key = let + cypher
-        if key > len(chars):
-            key -= len(chars)
-        ans.append(chars[key])
+        let = chars.index(b[i])
+        a = let + cypher
+        if a > len(chars):
+            a -= len(chars)
+        ans.append(chars[a])
     return ''.join(ans)
     
     
-def decode(key, user):
-    x = len(user)
-    y = len(key) - 1
+def decode(a, b):
+    x = len(b)
+    y = len(a) - 1
     z = -1
     realkey = []
     encry = []
     for i in range(x):
         z += 1
-        realkey.append(key[z])
+        realkey.append(a[z])
         if z >= y:
             z = -1
     letters = string.ascii_letters 
@@ -63,11 +62,11 @@ def decode(key, user):
     ans = []
     for i in range(x):
         cypher = chars.index(realkey[i])
-        let = chars.index(user[i])
-        key = let - cypher
-        if key < 0:
-            key += len(chars)
-        ans.append(chars[key])
+        let = chars.index(b[i])
+        a = let - cypher
+        if a < 0:
+            a += len(chars)
+        ans.append(chars[a])
     return ''.join(ans)    
 
 def passwordgen():
