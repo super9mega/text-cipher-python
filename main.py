@@ -1,15 +1,16 @@
 import base64
-import random 
+import random
 import string
 
 # this code takes an input then encodes the code with the Vigenère cipher, which takes a password to encode or decode
 # the note, the colin defines the start, if there is a space directly after the colin, its part of the code
 # this value if 0 will encrypt, if 1 will decrypt
+
 print('encode(0) or decode(1) message? ')
 while True:
     try:
         endecpt = int(input())
-        if endecpt > 1:
+        if endecpt > 1 or endecpt < 0:
             print('1 or a 0')
             continue
         break
@@ -30,8 +31,8 @@ def encode(a, b):
         realkey.append(a[z])
         if z >= y:
             z = -1
-    letters = string.ascii_letters 
-    digits = string.digits 
+    letters = string.ascii_letters
+    digits = string.digits
     symbols = string.punctuation
     chars = list(letters + digits + symbols)
     chars.append(' ')
@@ -44,8 +45,8 @@ def encode(a, b):
             a -= len(chars)
         ans.append(chars[a])
     return ''.join(ans)
-    
-    
+
+
 def decode(a, b):
     x = len(b)
     y = len(a) - 1
@@ -57,8 +58,8 @@ def decode(a, b):
         realkey.append(a[z])
         if z >= y:
             z = -1
-    letters = string.ascii_letters 
-    digits = string.digits 
+    letters = string.ascii_letters
+    digits = string.digits
     symbols = string.punctuation
     chars = list(letters + digits + symbols)
     chars.append(' ')
@@ -70,17 +71,13 @@ def decode(a, b):
         if a < 0:
             a += len(chars)
         ans.append(chars[a])
-    return ''.join(ans)    
+    return ''.join(ans)
 
-def passwordgen():
-# this program generates passwords based on the legnth defined below
-    legnth = 16
-# and based on the chars below (but works without any confg)
-    letters = string.ascii_letters 
-    digits = string.digits 
+def passwordgen(legnth):
+    letters = string.ascii_letters
+    digits = string.digits
     symbols = string.punctuation
     chars = letters + digits + symbols
-# based of the ideas shown in 'https://code.sololearn.com/cYhUD6B6Gry6/#py'
 
     password = ''
     for i in range(legnth):
@@ -88,8 +85,8 @@ def passwordgen():
     return(password)
 
 
-if key == None:
-    key = passwordgen()
+if key == '':
+    key = passwordgen(16)
 if endecpt == 0:
     print('encrypted string:' + str(encode(key, user)))
     print('key: ' + str(key))
